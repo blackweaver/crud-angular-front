@@ -1,6 +1,6 @@
 # CRUD
 
-Este es el frontend construido en Angular 11 que implementa un CRUD python, django (API) y SQL server (DB).
+Este es el frontend construido en Angular 11 que implementa un [CRUD python, django (API) y SQL server (DB)](https://github.com/blackweaver/crud-python-django-backend).
 
 ## Run project
 
