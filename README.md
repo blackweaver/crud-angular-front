@@ -1,27 +1,66 @@
-# Angular11
+## Tutorial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+https://www.youtube.com/watch?v=1Hc7KlLiU9w
 
-## Development server
+## Run project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm install
+ng serve -o
+```
 
-## Code scaffolding
+## Shared services
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```typescript
+export class SharedService {
+  readonly APIUrl = 'http://127.0.0.1:8000/';
+  readonly PhotoUrl = 'http://127.0.0.1:8000/media/';
 
-## Build
+  constructor(private http: HttpClient) {}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    getDepList(): Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl + '/department');
+    }
 
-## Running unit tests
+    addDepartment(val: any): void {
+      this.http.post(this.APIUrl + '/department', val);
+    }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    updateDepartment(val: any): void {
+      this.http.put(this.APIUrl + '/department', val);
+    }
 
-## Running end-to-end tests
+    deleteDepartment(val: any): void {
+      this.http.delete(this.APIUrl + '/department' + val);
+    }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    getEmpList(): Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl + '/department');
+    }
 
-## Further help
+    addEmployee(val: any): void {
+      this.http.post(this.APIUrl + '/employee', val);
+    }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    updateEmployee(val: any): void {
+      this.http.put(this.APIUrl + '/employee', val);
+    }
+
+    deleteEmployee(val: any): void {
+      this.http.delete(this.APIUrl + '/employee' + val);
+    }
+
+    UploadPhoto(val: any): void {
+      this.http.post(this.APIUrl + '/SaveFile', val);
+    }
+
+    getAllDepartmentNames(): Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl + 'department');
+    }
+
+}
+```
+
+## Create routing
+
+
