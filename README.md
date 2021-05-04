@@ -1,3 +1,7 @@
+# CRUD
+
+Este es el frontend construido en Angular 11 que implementa un CRUD python, django (API) y SQL server (DB).
+
 ## Run project
 
 ```
