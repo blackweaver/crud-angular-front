@@ -1,7 +1,3 @@
-## Tutorial
-
-https://www.youtube.com/watch?v=1Hc7KlLiU9w
-
 ## Run project
 
 ```
@@ -63,4 +59,15 @@ export class SharedService {
 
 ## Create routing
 
+```typescript
+const routes: Routes = [
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'department', component: DepartmentComponent },
+  { path: '**', component: DepartmentComponent },
+];
+```
 
+
+### Source
+
+https://www.youtube.com/watch?v=1Hc7KlLiU9w
