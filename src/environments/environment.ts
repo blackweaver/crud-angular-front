@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://blackweaver.pythonanywhere.com'
+  API_URL: 'https://blackweaver.pythonanywhere.com'
 };
 
 /*
