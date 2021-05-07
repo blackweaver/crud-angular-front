@@ -36,16 +36,16 @@ export class ShowEmpComponent implements OnInit {
     this.refreshEmpList();
   }
 
-  public editClick(id): void {
-    this.emp.EmployeeId = id;
+  public editClick(item): void {
+    this.emp = item;
     this.ModalTitle = 'Edit Employee';
     this.ActivateAddEditEmpComp = true;
-    console.log(this.emp);
+    // console.log(this.emp);
   }
 
   public deleteClick(id): void {
     if (confirm('Are you sure?')) {
-      this.service.deleteEmployee(id).subscribe(data => {
+      this.service.deleteEmployee(id.EmployeeId).subscribe(data => {
         alert(data.toString());
         this.refreshEmpList();
       });

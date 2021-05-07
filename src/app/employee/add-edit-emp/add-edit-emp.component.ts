@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { SharedService } from '../../shared.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SharedService } from '../../shared.service';
   templateUrl: './add-edit-emp.component.html',
   styleUrls: ['./add-edit-emp.component.css']
 })
-export class AddEditEmpComponent implements OnInit {
+export class AddEditEmpComponent implements OnInit, OnChanges {
 
   @Input() emp: any;
   public EmployeeId: number;
@@ -24,7 +24,12 @@ export class AddEditEmpComponent implements OnInit {
     this.loadDepartmentList();
   }
 
+  ngOnChanges(): void {
+    this.loadDepartmentList();
+  }
+
   public loadDepartmentList(): void {
+    console.log(this.emp);
     this.service.getAllDepartmentNames().subscribe((data: any) => {
       this.DepartmentsList = data;
 

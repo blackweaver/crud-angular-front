@@ -37,16 +37,16 @@ export class ShowDepComponent implements OnInit {
     this.refreshDepList();
   }
 
-  public editClick(id): void {
-    this.dep.DepartmentId = id;
+  public editClick(item): void {
+    this.dep = item;
     this.ModalTitle = 'Edit Department';
     this.ActivateAddEditDepComp = true;
     console.log(this.dep);
   }
 
-  public deleteClick(id): void {
+  public deleteClick(item): void {
     if (confirm('Are you sure?')) {
-      this.service.deleteDepartment(id).subscribe(data => {
+      this.service.deleteDepartment(item.DepartmentId).subscribe(data => {
         alert(data.toString());
         this.refreshDepList();
       });
