@@ -72,6 +72,6 @@ const routes: Routes = [
 ```
 
 
-### Source
+### Site URL
 
-https://www.youtube.com/watch?v=1Hc7KlLiU9w
+https://management-company.netlify.app/
