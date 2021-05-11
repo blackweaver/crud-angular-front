@@ -27,7 +27,7 @@ export class ShowEmpComponent implements OnInit {
       DateOfJoining: '',
       PhotoFileName: 'anonymous.png'
     };
-    this.ModalTitle = 'Add Employee';
+    this.ModalTitle = 'Agregar piloto';
     this.ActivateAddEditEmpComp = true;
     console.log(this.emp);
   }
@@ -38,7 +38,7 @@ export class ShowEmpComponent implements OnInit {
 
   public editClick(item): void {
     this.emp = item;
-    this.ModalTitle = 'Edit Employee';
+    this.ModalTitle = 'Editar piloto';
     this.ActivateAddEditEmpComp = true;
     // console.log(this.emp);
   }

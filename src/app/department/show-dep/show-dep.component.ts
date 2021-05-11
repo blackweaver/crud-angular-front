@@ -28,7 +28,7 @@ export class ShowDepComponent implements OnInit {
       DepartmentId: 0,
       DepartmentName: ''
     };
-    this.ModalTitle = 'Add Department';
+    this.ModalTitle = 'Agregar constructor';
     this.ActivateAddEditDepComp = true;
     console.log(this.dep);
   }
@@ -39,7 +39,7 @@ export class ShowDepComponent implements OnInit {
 
   public editClick(item): void {
     this.dep = item;
-    this.ModalTitle = 'Edit Department';
+    this.ModalTitle = 'Editar constructor';
     this.ActivateAddEditDepComp = true;
     console.log(this.dep);
   }
@@ -57,6 +57,7 @@ export class ShowDepComponent implements OnInit {
     this.service.getDepList().subscribe(data => {
       this.DepartmentList = this.DepartmentListWithoutFilter = data;
     });
+    console.log("funca");
   }
 
   public FilterFn(): void {

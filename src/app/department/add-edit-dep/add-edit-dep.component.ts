@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { SharedService } from '../../shared.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { SharedService } from '../../shared.service';
 export class AddEditDepComponent implements OnInit, OnChanges {
 
   @Input() dep: any;
+  @Output() saveList: EventEmitter<Event> = new EventEmitter();
+  @ViewChild('myinput') myInputField: ElementRef;
+
   public DepartmentId: number;
   public DepartmentName: string;
 
@@ -25,6 +28,9 @@ export class AddEditDepComponent implements OnInit, OnChanges {
     this.DepartmentId = this.dep.DepartmentId;
     this.DepartmentName = this.dep.DepartmentName;
     console.log(this.dep.DepartmentId);
+    setTimeout(() => {
+        this.myInputField.nativeElement.focus();
+    }, 500);
   }
 
   public addDepartment(): void {
@@ -33,6 +39,7 @@ export class AddEditDepComponent implements OnInit, OnChanges {
       DepartmentName: this.DepartmentName
     };
     this.service.addDepartment(val).subscribe(res => {
+      this.saveList.emit();
       alert(res.toString());
     });
   }
@@ -43,6 +50,7 @@ export class AddEditDepComponent implements OnInit, OnChanges {
       DepartmentName: this.DepartmentName
     };
     this.service.updateDepartment(val).subscribe(res => {
+      this.saveList.emit();
       alert(res.toString());
     });
   }

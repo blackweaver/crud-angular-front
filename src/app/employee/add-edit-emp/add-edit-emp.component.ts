@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { SharedService } from '../../shared.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { SharedService } from '../../shared.service';
 export class AddEditEmpComponent implements OnInit, OnChanges {
 
   @Input() emp: any;
+  @Output() saveList: EventEmitter<Event> = new EventEmitter();
+  @ViewChild('myinput') myInputField: ElementRef;
+
   public EmployeeId: number;
   public EmployeeName: string;
   public Department: string;
@@ -26,6 +29,9 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.loadDepartmentList();
+    setTimeout(() => {
+      this.myInputField.nativeElement.focus();
+  }, 500);
   }
 
   public loadDepartmentList(): void {
@@ -52,6 +58,7 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
       PhotoFileName: this.PhotoFileName
     };
     this.service.addEmployee(val).subscribe(res => {
+      this.saveList.emit();
       alert(res.toString());
     });
   }
@@ -65,6 +72,7 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
       PhotoFileName: this.PhotoFileName
     };
     this.service.updateEmployee(val).subscribe(res => {
+      this.saveList.emit();
       alert(res.toString());
     });
   }
@@ -76,6 +84,7 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
     formData.append('uploadedFile', file, file.name);
 
     this.service.UploadPhoto(formData).subscribe((data: any) => {
+        this.saveList.emit();
         this.PhotoFileName = data.toString();
         this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
     });

@@ -8,19 +8,19 @@ data-bs-target="#exampleModal"
 data-backdrop="static"
 data-keyboard="false"
 >
-    Add Employee
+    Agregar piloto
   </button>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
         </div>
         <div class="modal-body" *ngIf="emp">
-            <app-add-edit-emp [emp]="emp" *ngIf="ActivateAddEditEmpComp"></app-add-edit-emp>
+            <app-add-edit-emp (saveList)="refreshEmpList()" [emp]="emp" *ngIf="ActivateAddEditEmpComp"></app-add-edit-emp>
         </div>
       </div>
     </div>
@@ -29,11 +29,11 @@ data-keyboard="false"
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>EmployeeId</th>
-            <th>Employee Name</th>
-            <th>Employee</th>
-            <th>Employee DateOfJoining</th>
-            <th>Option</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>Fecha de ingreso</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,7 +41,7 @@ data-keyboard="false"
             <td>{{ dataItem.EmployeeId }}</td>
             <td>{{ dataItem.EmployeeName }}</td>
             <td>{{ dataItem.Department }}</td>
-            <td>{{ dataItem.DateOfJoining }}</td>
+            <td>{{ dataItem.DateOfJoining | date:'mediumDate' }}</td>
             <td>
                 <button 
                 type="button" 
