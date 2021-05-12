@@ -14,6 +14,7 @@ export class ShowEmpComponent implements OnInit {
   public ModalTitle: string;
   public ActivateAddEditEmpComp: boolean;
   public emp: any;
+  public PhotoFilePath: string;
 
   ngOnInit(): void {
     this.refreshEmpList();
@@ -53,6 +54,7 @@ export class ShowEmpComponent implements OnInit {
   }
 
   public refreshEmpList(): void {
+    this.PhotoFilePath = this.service.PhotoUrl;
     this.service.getEmpList().subscribe(data => {
       this.EmployeeList = data;
     });

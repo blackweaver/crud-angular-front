@@ -30,6 +30,7 @@ data-keyboard="false"
     <thead>
         <tr>
             <th>ID</th>
+            <th></th>
             <th>Nombre</th>
             <th>Equipo</th>
             <th>Fecha de ingreso</th>
@@ -38,11 +39,12 @@ data-keyboard="false"
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of EmployeeList">
-            <td>{{ dataItem.EmployeeId }}</td>
-            <td>{{ dataItem.EmployeeName }}</td>
-            <td>{{ dataItem.Department }}</td>
-            <td>{{ dataItem.DateOfJoining | date:'mediumDate' }}</td>
-            <td>
+            <td class="align-middle">{{ dataItem.EmployeeId }}</td>
+            <td class="align-middle"><img src="{{ PhotoFilePath }}/{{ dataItem.PhotoFileName }}" style="max-width: 50px; vertical-align: middle;" alt=""></td>
+            <td class="align-middle">{{ dataItem.EmployeeName }}</td>
+            <td class="align-middle">{{ dataItem.Department }}</td>
+            <td class="align-middle">{{ dataItem.DateOfJoining | date:'mediumDate' }}</td>
+            <td class="align-middle">
                 <button 
                 type="button" 
                 class="btn btn-light mr-1"
