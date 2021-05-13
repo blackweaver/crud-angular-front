@@ -30,7 +30,6 @@ export class ShowDepComponent implements OnInit {
     };
     this.ModalTitle = 'Agregar constructor';
     this.ActivateAddEditDepComp = true;
-    console.log(this.dep);
   }
   public closeClick(): void {
     this.ActivateAddEditDepComp = false;
@@ -41,7 +40,6 @@ export class ShowDepComponent implements OnInit {
     this.dep = item;
     this.ModalTitle = 'Editar constructor';
     this.ActivateAddEditDepComp = true;
-    console.log(this.dep);
   }
 
   public deleteClick(item): void {
@@ -57,7 +55,6 @@ export class ShowDepComponent implements OnInit {
     this.service.getDepList().subscribe(data => {
       this.DepartmentList = this.DepartmentListWithoutFilter = data;
     });
-    console.log("funca");
   }
 
   public FilterFn(): void {

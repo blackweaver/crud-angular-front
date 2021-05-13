@@ -35,7 +35,10 @@ data-keyboard="false"
                   [(ngModel)]="DepartmentIdFilter" 
                   (keyup)="FilterFn()"
                   placeholder="Filtrar"
-                  class="form-control" 
+                  class="form-control"
+                  maxlength="4" 
+                  size="4"
+                  style="max-width: 80px;"
                 >
 
                 <button 
@@ -87,7 +90,7 @@ data-keyboard="false"
                 </svg>
                 </button>
               </div>
-              Equipos / Constructores
+              Equipos
             </th>
             <th></th>
         </tr>

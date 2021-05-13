@@ -16,6 +16,11 @@ export class ShowEmpComponent implements OnInit {
   public emp: any;
   public PhotoFilePath: string;
 
+  public EmployeeIdFilter = '';
+  public EmployeeNameFilter = '';
+  public DepartmentNameFilter = '';
+  public EmployeeListWithoutFilter: any = [];
+
   ngOnInit(): void {
     this.refreshEmpList();
   }
@@ -24,13 +29,12 @@ export class ShowEmpComponent implements OnInit {
     this.emp = {
       EmployeeId: 0,
       EmployeeName: '',
-      Employee: '',
+      Department: '',
       DateOfJoining: '',
       PhotoFileName: 'anonymous.png'
     };
     this.ModalTitle = 'Agregar piloto';
     this.ActivateAddEditEmpComp = true;
-    console.log(this.emp);
   }
   public closeClick(): void {
     this.ActivateAddEditEmpComp = false;
@@ -41,7 +45,6 @@ export class ShowEmpComponent implements OnInit {
     this.emp = item;
     this.ModalTitle = 'Editar piloto';
     this.ActivateAddEditEmpComp = true;
-    // console.log(this.emp);
   }
 
   public deleteClick(id): void {
@@ -56,7 +59,35 @@ export class ShowEmpComponent implements OnInit {
   public refreshEmpList(): void {
     this.PhotoFilePath = this.service.PhotoUrl;
     this.service.getEmpList().subscribe(data => {
-      this.EmployeeList = data;
+      this.EmployeeList = this.EmployeeListWithoutFilter = data;
+    });
+  }
+
+  public FilterFn(): void {
+    const EmployeeIdFilter = this.EmployeeIdFilter;
+    const DepartmentNameFilter = this.DepartmentNameFilter;
+    const EmployeeNameFilter = this.EmployeeNameFilter;
+
+    this.EmployeeList = this.EmployeeListWithoutFilter.filter( (el) => {
+      return el.EmployeeId.toString().toLowerCase().includes(
+        EmployeeIdFilter.toString().trim().toLowerCase()
+      ) &&
+      el.Department.toString().toLowerCase().includes(
+        DepartmentNameFilter.toString().trim().toLowerCase()
+      ) &&
+      el.EmployeeName.toString().toLowerCase().includes(
+        EmployeeNameFilter.toString().trim().toLowerCase()
+      );
+    });
+  }
+
+  public sortResult(prop, asc): any {
+    this.EmployeeList = this.EmployeeListWithoutFilter.sort((a, b) => {
+      if (asc) {
+        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+      } else {
+        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+      }
     });
   }
 
