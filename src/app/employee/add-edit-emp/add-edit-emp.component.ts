@@ -19,23 +19,27 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
   public PhotoFileName: string;
   public PhotoFilePath: string;
 
+  public showSelect: boolean;
+
   DepartmentsList: any = [];
 
   constructor(private service: SharedService) {}
 
   ngOnInit(): void {
     this.loadDepartmentList();
+    setTimeout(() => {
+      this.showSelect = true;
+  }, 100);
   }
 
   ngOnChanges(): void {
     this.loadDepartmentList();
     setTimeout(() => {
-      this.myInputField.nativeElement.focus();
-  }, 500);
+        this.myInputField.nativeElement.focus();
+    }, 500);
   }
 
   public loadDepartmentList(): void {
-    console.log(this.emp);
     this.service.getAllDepartmentNames().subscribe((data: any) => {
       this.DepartmentsList = data;
 

@@ -1,31 +1,30 @@
-<div class="d-flex flex-row bd-highlight mb-3">
+<div class="d-flex align-items-start flex-row bd-highlight mb-3">
 
-<div class="form-froup row">
-    <label for="" class="col-sm-4 col-form-label text-sm-right">Nombre del piloto</label>
-    <div class="col-sm-8">
-        <input #myinput type="text" class="form-control" [(ngModel)]="EmployeeName"
-        placeholder="Agregar nombre de piloto"
-        />
-    </div>
-    <label for="" class="col-sm-4 col-form-label text-sm-right">Constructor</label>
-    <div class="col-sm-8">
-        <select class="form-select" [(ngModel)]="Department">
-            <option>--Select--</option>
-            <option *ngFor="let depName of DepartmentsList">
-                {{ depName.DepartmentName }}
-            </option>
-        </select>
-    </div>
+    <div class="form-froup col-sm-7 row">
+        <label for="" class="col-sm-5 col-form-label text-sm-right pr-0">Nombre del piloto</label>
+        <div class="col-sm-7 mb-2">
+            <input #myinput type="text" class="form-control" [(ngModel)]="EmployeeName"
+            placeholder="Agregar nombre de piloto"
+            />
+        </div>
+        <label for="" class="col-sm-5 col-form-label text-sm-right pr-0">Constructor</label>
+        <div class="col-sm-7 mb-2">
+            <select class="form-select" *ngIf="showSelect" [(ngModel)]="Department">
+                <option *ngFor="let depName of DepartmentsList">
+                    {{ depName.DepartmentName }}
+                </option>
+            </select>
+        </div>
 
-    <label for="" class="col-sm-4 col-form-label text-sm-right">Fecha de ingreso</label>
-    <div class="col-sm-8">
-        <input type="date" class="form-control" [(ngModel)]="DateOfJoining" />
+        <label for="" class="col-sm-5 col-form-label text-sm-right pr-0">Fecha de ingreso</label>
+        <div class="col-sm-7">
+            <input type="date" class="form-control" [(ngModel)]="DateOfJoining" />
+        </div>
     </div>
-</div>
-<div class="ml-3 bd-highlight" style="width: 40%">
-    <img [src]="PhotoFilePath" style="max-width: 150px" alt="">
-    <input type="file" (change)="uploadPhoto($event)" class="mt-2" />
-</div>
+    <div class="bd-highlight col-sm-5">
+        <img [src]="PhotoFilePath" style="width: 100%; max-width: 500px" alt="">
+        <input type="file" (change)="uploadPhoto($event)" class="mt-2" style="max-width: 105px" />
+    </div>
 
 </div>
 
