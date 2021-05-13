@@ -29,7 +29,7 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
     this.loadDepartmentList();
     setTimeout(() => {
       this.showSelect = true;
-  }, 100);
+    }, 100);
   }
 
   ngOnChanges(): void {
@@ -49,7 +49,6 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
       this.DateOfJoining = this.emp.DateOfJoining;
       this.PhotoFileName = this.emp.PhotoFileName;
       this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
-      console.log('LIST', this.DepartmentsList);
     });
   }
 
@@ -95,7 +94,3 @@ export class AddEditEmpComponent implements OnInit, OnChanges {
   }
 
 }
-/* function data(data: any, any: any) {
-  throw new Error('Function not implemented.');
-}
- */

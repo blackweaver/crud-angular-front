@@ -10,6 +10,7 @@
         <label for="" class="col-sm-5 col-form-label text-sm-right pr-0">Constructor</label>
         <div class="col-sm-7 mb-2">
             <select class="form-select" *ngIf="showSelect" [(ngModel)]="Department">
+                <option>-- Seleccionar equipo --</option>
                 <option *ngFor="let depName of DepartmentsList">
                     {{ depName.DepartmentName }}
                 </option>
