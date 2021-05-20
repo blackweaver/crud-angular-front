@@ -97,12 +97,12 @@ data-keyboard="false"
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of DepartmentList">
-            <td style="width: 180px;">{{ dataItem.DepartmentId }}</td>
+            <td style="width: 150px">{{ dataItem.DepartmentId }}</td>
             <td>{{ dataItem.DepartmentName }}</td>
             <td>
                 <button 
                 type="button" 
-                class="btn btn-light mr-1"
+                class="btn btn-light"
                 (click)="editClick(dataItem)"
                 data-bs-toggle="modal" 
                 data-bs-target="#exampleModal"

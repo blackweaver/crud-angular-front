@@ -1,6 +1,6 @@
-<div class="d-flex align-items-start flex-row bd-highlight mb-3">
+<div class="row align-items-start flex-row bd-highlight mb-3">
 
-    <div class="form-froup col-sm-7 row">
+    <div class="form-froup col col-md-7 row">
         <label for="" class="col-sm-5 col-form-label text-sm-right pr-0">Nombre del piloto</label>
         <div class="col-sm-7 mb-2">
             <input #myinput type="text" class="form-control" [(ngModel)]="EmployeeName"
@@ -22,7 +22,7 @@
             <input type="date" class="form-control" [(ngModel)]="DateOfJoining" />
         </div>
     </div>
-    <div class="bd-highlight col-sm-5">
+    <div class="bd-highlight mt-4 mt-sm-0 col col-md-5">
         <img [src]="PhotoFilePath" style="width: 100%; max-width: 500px" alt="">
         <input type="file" (change)="uploadPhoto($event)" class="mt-2" style="max-width: 105px" />
     </div>
